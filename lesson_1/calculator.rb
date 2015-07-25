@@ -19,7 +19,6 @@ end
 
 num1 = get_number
 num2 = get_number
-operator = ""
 
 loop do
   puts "What operation would you like to perform?"
