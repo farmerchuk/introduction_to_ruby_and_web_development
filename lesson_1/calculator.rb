@@ -44,5 +44,9 @@ when operator == "*"
   puts num1.to_i * num2.to_i
 when operator == "/"
   print "The result is: "
-  puts num1.to_f / num2.to_f
+  if num2 != "0"
+    puts num1.to_f / num2.to_f
+  else
+    puts "You cannot divide by 0. System will self-destruct in 5 seconds."
+  end
 end
