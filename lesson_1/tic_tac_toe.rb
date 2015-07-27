@@ -15,11 +15,16 @@
 ##########################################################
 
 WINNING_LINES = [["1", "2", "3"],["4", "5", "6"],["7", "8", "9"],["1", "4", "7"],["2", "5", "8"],["3", "6", "9"],["1", "5", "9"],["3", "5", "7"]]
-board = { "1" => " ", "2" => " ", "3" => " ", "4" => " ", "5" => " ", "6" => " ", "7" => " ", "8" => " ", "9" => " " }
+board = {}
 first_player = ""
 
 # methods
 ##########################################################
+def initialize_board(board)
+  ("1".."9").each { |square| board[square] = " " }
+  board
+end
+
 
 def draw_board(board)
   system "clear"
@@ -86,6 +91,7 @@ end
 ##########################################################
 
 first_player = determine_first_player
+initialize_board(board)
 draw_board(board)
 
 if first_player == "Human"
