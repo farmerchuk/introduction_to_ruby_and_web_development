@@ -54,9 +54,33 @@ def player_selects_empty_square(board)
 end
 
 def computer_selects_empty_square(board)
-  computer_choice = board.select { |k,v| v == " " }.keys.sample
-  board[computer_choice] = "O"
+  best_square = test_for_two_in_a_row(board)
+  if best_square
+    board[best_square] = "O"
+  else
+    computer_choice = board.select { |k,v| v == " " }.keys.sample
+    board[computer_choice] = "O"
+  end
   draw_board(board)
+end
+
+def test_for_two_in_a_row(board)
+  WINNING_LINES.each do |winning_line|
+    if board.values_at(*winning_line).count("O") == 2
+      winning_line.each do |value|
+        if board[value] == " "
+          return value
+        end
+      end
+    elsif board.values_at(*winning_line).count("X") == 2
+      winning_line.each do |value|
+        if board[value] == " "
+          return value
+        end
+      end
+    end
+  end
+  nil
 end
 
 def return_winner(board)
