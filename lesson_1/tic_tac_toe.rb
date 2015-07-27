@@ -25,7 +25,6 @@ def initialize_board(board)
   board
 end
 
-
 def draw_board(board)
   system "clear"
   puts "Tic-Tac-Toe"
