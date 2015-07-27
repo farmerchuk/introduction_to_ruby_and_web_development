@@ -65,22 +65,26 @@ def computer_selects_empty_square(board)
 end
 
 def test_for_two_in_a_row(board)
+  best_choice = nil
   WINNING_LINES.each do |winning_line|
-    if board.values_at(*winning_line).count("O") == 2
+    if board.values_at(*winning_line).count("X") == 2
       winning_line.each do |value|
         if board[value] == " "
-          return value
-        end
-      end
-    elsif board.values_at(*winning_line).count("X") == 2
-      winning_line.each do |value|
-        if board[value] == " "
-          return value
+          best_choice = value
         end
       end
     end
   end
-  nil
+  WINNING_LINES.each do |winning_line|
+    if board.values_at(*winning_line).count("O") == 2
+      winning_line.each do |value|
+        if board[value] == " "
+          best_choice = value
+        end
+      end
+    end
+  end
+  best_choice
 end
 
 def return_winner(board)
