@@ -1,0 +1,1 @@
+jump, attack, block, smack, punch, kick, walk, poke, slice
