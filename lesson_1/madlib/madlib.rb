@@ -1,7 +1,6 @@
 # madlib.rb
 
 # methods
-#################################
 
 def print_bad_file(file_name)
   puts "#{file_name} missing or file not valid. Program exiting..."
@@ -17,7 +16,7 @@ def read_helper_file(file_name)
     exit
   end
   File.open(file_name, "r") do |file|
-    file.read.split
+    file.read.split(",")
   end
 end
 
@@ -32,11 +31,25 @@ def read_story_file(file_name)
 end
 
 # load files
-#################################
 
 story = read_story_file(ARGV[0])
 heroes = read_helper_file("heroes.txt")
 monsters = read_helper_file("monsters.txt")
 adjectives = read_helper_file("adjectives.txt")
 verbs = read_helper_file("verbs.txt")
+
+# substitute words
+
+story.gsub!("HERO", heroes.sample)
+story.gsub!("MONSTER") { |monster| monsters.sample }
+story.gsub!("ADJECTIVE") { |monster| adjectives.sample }
+story.gsub!("VERB") { |monster| verbs.sample }
+
+# print modified story
+
+puts story
+
+
+
+
 

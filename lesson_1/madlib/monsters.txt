@@ -1,1 +1,1 @@
-skeleton, dragon, orc, imp, fairy, goblin, giant spider, ghost
+skeleton,dragon,orc,imp,goblin,spider,ghost

@@ -1,1 +1,1 @@
-green, red, blue, giant, tiny, devious, shy, shiny, broken, hairy, quiet
+green,red,blue,giant,tiny,devious,shy,shiny,broken,hairy,quiet

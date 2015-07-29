@@ -1,1 +1,1 @@
-paladin, knight, barbarian, wizard, sorcerer, rouge, ranger, cleric, druid
+paladin,knight,barbarian,wizard,sorcerer,rouge,ranger,cleric,druid
