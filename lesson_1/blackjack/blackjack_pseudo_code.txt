@@ -1,0 +1,34 @@
+# pseudo code workflow
+
+# get the player's name
+# build a deck from 4 complete decks of cards, including suits
+# deal two random cards to the player
+# deal two random cards to the house
+# player goes first
+# player chooses to hit or stay. repeat until player chooses to stay, hits 21 or busts
+# if player does not win or bust and chooses to stay, then the computer takes its turn
+# computer hits until it reaches at least 17 or busts
+# if both player and computer do not bust or hit 21, then the highest hand wins
+# ask player if they want to play again
+
+# methods required
+
+# get players name
+# initialize/build the deck
+# deal a card
+# calculate hand total
+# request action such as hit or stay
+# check to see if player hits 21 and wins
+# check for bust
+# check for hand size of at least 17
+# compare hand totals
+# play again?
+
+# objects required
+
+# SUITS
+# CARD VALUES
+# player's name
+# deck of cards
+# player's hand
+# computer's hand
