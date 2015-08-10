@@ -1,0 +1,36 @@
+OVERVIEW:
+
+tic-tac-toe is a game where players take turns placing markers on a 3x3 board until
+one player get's three of their markers in a row. if no one gets three in a row, then
+the game results in a tie.
+
+OBJECTS & BEHAVIORS:
+
+Board
+@ grid
+. build the board
+. draw board
+. is the board full?
+. what are the empty spaces?
+. are there three in a row of a marker type?
+. mark a position
+
+Square
+@ square
+. is the square empty?
+. what marker is in the square?
+
+Players
+@ name
+@ marker type
+
+Game
+@ MARKER TYPES
+@ current player's turn
+
+
+
+
+
+
+
