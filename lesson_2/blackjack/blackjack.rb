@@ -85,6 +85,7 @@ class Game
   attr_accessor :guest, :dealer, :deck
   
   BLACKJACK = 21
+  DEALER_STAY_MIN = 17
   
   def initialize
     @guest = Player.new("Jason")
@@ -100,11 +101,8 @@ class Game
       deal_initial_hands(guest, dealer)
       display_player_hand(guest)
       display_dealer_top_card
-      if blackjack?(guest)
-        puts "#{guest.name} gets Blackjack and wins!"
-      else
-        dealer_turn(guest) if player_turn(guest) 
-      end
+      player_turn(guest)
+      dealer_turn
     end until !play_again?
   end
   
@@ -129,7 +127,7 @@ class Game
     puts
   end
   
-  def display_table(player)
+  def display_flop(player)
     system "clear"
     display_player_hand(player)
     display_dealer_top_card
@@ -188,38 +186,38 @@ class Game
   end
 
   def player_turn(player)
+    if blackjack?(player)
+      puts "#{player.name} gets Blackjack and wins!"
+      play_again?
+    end
     loop do
-      display_table(player)
-      if hit?
-        deal_card(player)
-      else 
-        return true
-      end
+      display_flop(player)
       if bust?(player)
         display_all_cards(player)
         puts "#{player.name} busts and loses! Dealer wins!"
-        return false
+        play_again?
       elsif blackjack?(player)
         display_all_cards(player) 
         puts "#{player.name} hits Blackjack and wins!"       
-        return false
+        play_again?
       end
+      hit? ? deal_card(player) : break
     end
   end
   
-  def dealer_turn(player)
-    while dealer.hand.value < 17
+  def dealer_turn
+    while dealer.hand.value < DEALER_STAY_MIN
       deal_card(dealer)
     end
-    display_all_cards(player)
+    display_all_cards(guest)
     if bust?(dealer)      
-      puts "Dealer busts and loses! #{player.name} wins!"
+      puts "Dealer busts and loses! #{guest.name} wins!"
     elsif blackjack?(dealer)
       puts "Dealer hits Blackjack and wins! You lose!"       
-    elsif tie?(player, dealer)
+    elsif tie?(guest, dealer)
       puts "It's a tie!"
     else
-      winning_hand(player)
+      winning_hand(guest)
     end
   end
 
@@ -230,9 +228,12 @@ def play_again?
   if player_choice == "yes"
     guest.hand.cards.clear
     dealer.hand.cards.clear
-    return true
+    self.deck = Deck.new(3)
+    play
   else
-    return false
+    puts
+    puts "Thank you for playing!"
+    exit
   end
 end
 
