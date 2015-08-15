@@ -1,0 +1,44 @@
+GAMEPLAY
+- request the human player's name
+- a deck is created and shuffled.  preferably use more than one deck to prevent card counting
+- decks consist of 52 cards, no jokers.  numered cards are valued at their number, facecards are valued at 10, aces either 1 or 11 depending on player advantage
+- deal two cards to the player and two cards to the computer.  one of the computer's cards should be visible to the player
+- present the player with their hand.  also calculate the player's hand and present the value
+- give the player the option to hit or stand
+- if player hits, deal him/her another card.  continue until the player chooses to stand, get's blackjack or busts
+- if player stands, play passes to the computer.
+- computer will continue hitting until its hand is valued at at least 17.  once the computer's hand is valued between 17 and 20 (inclusive), computer stands
+- if both parties stand, their hand values are compared and the party with the highest valued hand wins.  if both hands are the same value, it's a tie
+- player may choose to play again
+
+POSSIBLE CLASSES & BEHAVIORS
+- Player
+- Deck
+  .build_deck
+  .shuffle
+  .deal_card
+- Card
+  .display_card
+- Hand
+  .add_card_to_hand
+  .hand_value
+  .display_hand
+- Game
+  .set_player_name
+  .deal_card(num_of_cards)
+  .player_turn
+  .computer_turn
+  .display_table
+  .display_hand
+  .display_hand_value
+  .display_dealer_up_card
+  .player_stand?
+  .dealer_stand?
+  .bust?(hand)
+  .blackjack?(hand)
+  .tie?(player_hand, computer_hand)
+  .determine_winner(player_hand, computer_hand)
+  .display_winner
+  .play_again?
+  
+  
